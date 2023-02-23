@@ -67,7 +67,7 @@ void ScatterFactors::update(CartesianCoor3D q) {
 		if (m_background) {
 			double k  = m_kappas[(*p_selection)[i]];
 			double v = Database::Inst()->volumes.get(atomID);
-			double efactor = Database::Inst()->exclusionfactors.get(atomID,k*v,ql);
+			double efactor = Database::Inst()->exclusionfactors.get(atomID,k,v,ql);
 
 			sf = sf - background_sl*efactor;
 		}
@@ -115,7 +115,7 @@ double ScatterFactors::compute_background(CartesianCoor3D q) {
 		double k  = m_kappas[(*p_selection)[i]];
 		double v = Database::Inst()->volumes.get(atomID);
 		//kappa values are double counted in the exclusion factor gaussians. The kappa correction should not be used in the Gaussian. 
-		double efactor = Database::Inst()->exclusionfactors.get(atomID,k*v,ql);
+		double efactor = Database::Inst()->exclusionfactors.get(atomID,k,v,ql);
 
         efactor_sum+=efactor;
         sf_sum+=sf;            
