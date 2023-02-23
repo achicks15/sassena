@@ -60,7 +60,7 @@ public:
 //	void reg(std::string label, std::vector<double> constants,size_t function_type);
 //	double get(std::string label);
 	void reg(size_t ID, std::vector<double> constants,size_t function_type);
-	double get(size_t ID,double effvolume,double q);
+	double get(size_t ID, double kap, double vol, double q);
 
 };
 
