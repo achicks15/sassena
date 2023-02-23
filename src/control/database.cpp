@@ -427,7 +427,7 @@ void DatabaseExlusionParameters::clear_quicklookup() {
 	quicklookup_counter=0;
 }
 
-double DatabaseExlusionParameters::get(size_t ID,double effvolume,double q) {
+double DatabaseExlusionParameters::get(size_t ID, double kap, double vol, double q) {
 		
 	size_t ft = m_functiontypes[ID];
 	vector<double> v = m_constants[ID];
@@ -440,7 +440,8 @@ double DatabaseExlusionParameters::get(size_t ID,double effvolume,double q) {
 	}
 	
 	if (ft==2) { // gaussian
-        return effvolume*exp(-1.0*powf(effvolume,2.0/3.0)*powf(q,2)/(4*M_PI))*v[0];
+		// changes: only volume in exponential; split the k*v;
+        return kap*vol*exp(-1.0*powf(vol,2.0/3.0)*powf(q,2)/(4*M_PI))*v[0];
 	}
 
 	// don't need a quicklookup for volume calculations, b/c pretty fast
