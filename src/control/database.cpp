@@ -436,7 +436,7 @@ double DatabaseExlusionParameters::get(size_t ID, double kap, double vol, double
 	}
 	
 	if (ft==1) { // 1 = linear
-		return effvolume*v[0];
+		return kap*vol*v[0];
 	}
 	
 	if (ft==2) { // gaussian
